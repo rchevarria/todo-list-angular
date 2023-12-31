@@ -1,7 +1,7 @@
 <div class="container">
   <div class="todo-list">
 
-    {{title}} 
+    {{title}}
 
     <div class="input-group">
       <input type="text" placeholder="Todo" #newTask>
@@ -10,15 +10,17 @@
     <table>
       <tr *ngFor="let task of tasks; let i = index" [class.even]="i%2==0" [class.odd]="i%2">
         <td>
-          <pre [class.is-done]="task.isDone">
+          <p [class.is-done]="task.isDone" >
             {{task.title}}
-          </pre>
+          </p>
         </td>
         <td>
           <button (click)="remove(task)" class="remove-button">X</button>
-          <button (click)="markAsDone(task)" class="done-button">Done</button>
+          <button (click)="task.toggleIsDone()" class="done-button">
+            {{task.isDone? "Undo" : "Done"}}
+          </button>
         </td>
-      </tr>
+      </tr>      
     </table>
   </div>
 </div>
